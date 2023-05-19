@@ -7,9 +7,9 @@ import natsort
 
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
-plt.rcParams.update({'font.size': 50})
+plt.rcParams.update({'font.size': 70})
 rc('font', weight='bold')
-
+rc('axes',linewidth=5,edgecolor='k')
 
 def open_mom_files(file):
 
@@ -37,7 +37,7 @@ def open_mom_files(file):
 
 upperdirs = natsort.natsorted(glob.glob("*/", recursive=True),reverse=True)
 
-fig, axs = plt.subplots(figsize=(20,20))
+fig, axs = plt.subplots(figsize=(25,25))
 
 colors=['orange','g','orange','g','y']
 line=['-',':','-',':']
@@ -67,17 +67,20 @@ for idx,direct in enumerate(upperdirs):
              unique_avg_q.append(sum_at_radius)
         ##Bring together r and charges.
         plot_data = np.vstack((unique_r, unique_avg_q)).T
-        axs.scatter(plot_data[:,0],plot_data[:,1],c=colors[idx],marker=sty[idx],s=200,label=r"$\mathrm{{MMA2_{{Q_{{mol}}={}}}}}$".format(which_is_it))
+        axs.scatter(plot_data[:,0],plot_data[:,1],c=colors[idx],marker=sty[idx],s=450,label=r"$\mathrm{{MMA2_{{Q_{{mol}}={}}}}}$".format(which_is_it))
 y_classical = []
 for i in plot_data[:,0]:
     y_exp = 1-(5/((i**2+25)**float(1/2)))
     y_classical.append(y_exp)
 classical_data = np.vstack((unique_r, y_classical)).T
-axs.plot(classical_data[:,0],classical_data[:,1],c='k',linewidth=7,label=r"$\mathrm{Conducting \ Sheet}$")
-axs.set_xlim([-2,472])
+axs.plot(classical_data[:,0],classical_data[:,1],c='k',linewidth=10,label=r"$\mathrm{Conducting \ Sheet}$")
+axs.set_xlim([-1,471])
 axs.set_ylim([-0.01,1.01])
-axs.grid(which='both')
+axs.xaxis.set_tick_params(direction="in",length=25,width=8)
+axs.yaxis.set_tick_params(direction="in",length=25,width=8)
+axs.set_xticks([100,200,300,400])
+axs.grid(False)
 axs.legend(loc=8, frameon=False, title=r"$\mathrm{(a): \ h=5 \ a_{0}}$")
-axs.set_xlabel(r"$R \ a_{0}$")
+axs.set_xlabel(r"$R \ (a_{0})$")
 axs.set_ylabel(r"$q_{Cumulative} \ (e)$")
 plt.savefig("figure_4_a.png",dpi=300,bbox_inches='tight')
