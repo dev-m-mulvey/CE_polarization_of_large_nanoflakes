@@ -26,3 +26,5 @@ Contains two directories with the data (.out), plotting scripts, and images that
 ## Disclaimer
 **Beyond what I provide here, if you need information to run the calculations I urge you to read the manual of the programs used. I can't guarantee there is documentation for all the modifications I made and that manuals are completely up to date.**
 * [Psi4](https://psicode.org/psi4manual/1.4.0/index.html)
+* [Matplotlib](https://matplotlib.org/stable/users/index.html)
+* [SciPy](https://docs.scipy.org/doc/scipy/)
