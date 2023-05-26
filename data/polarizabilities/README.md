@@ -2,7 +2,7 @@
 We employed the finite field method to calculate the PBE0 and MP2 polarizabilities that appear in the paper.
 We used a 3-point forward finite difference formula of the induced dipole:
 
-$$\alpha_{ii} = \frac{\mu(0)+4\mu(E^{i}_{h})-\mu(E^{i}_{2h})}{2h}$$
+$$ \alpha_{ii} = \frac{\mu(0)+4\mu(E^{i}_{h})-\mu(E^{i}_{2h})}{2h} $$
 
 where $\alpha_{ii}$ is the static dipole polarizability entry with cartesian component $i$, $\mu$ is the induced dipole, $E^{i}$ is a uniform electric field in direction $i$, and $h$ is the strength of the applied electric field. 
 The strength of the applied field ($h$) was adjusted with the size of PAH to avoid overpolarizing and introducing contamination by higher order polarizabilities/hyperpolarizabilities.
