@@ -7,6 +7,8 @@ We used a 3-point forward finite difference formula of the induced dipole:
 ```
 
 where $\alpha_{ii}$ is the static dipole polarizability entry with cartesian component $i$, $\mu$ is the induced dipole, $E^{i}$ is a uniform electric field in direction $i$, and $h$ is the strength of the applied electric field. 
+Note that the first entry ($\mu(0)$) is the permanent dipole, which is zero for the hexagonal PAHs we cosider, so that term drops out of the above equation. 
+
 The strength of the applied field ($h$) was adjusted with the size of PAH to avoid overpolarizing and introducing contamination by higher order polarizabilities/hyperpolarizabilities.
 We used a simple criterion to evaluate if the above condition was met: If doubling $h$ corresponded to a doubling of $\alpha_{ii}$, as the latter should increase linearly with field strength so long as other polarizabilities are not contaminating its measurement.
 We list the value of $h$ used for each PAH below in atomic units:
