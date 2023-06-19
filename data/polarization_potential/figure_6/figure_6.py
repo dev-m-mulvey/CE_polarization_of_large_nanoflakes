@@ -36,8 +36,8 @@ axs.scatter(z,impot,color="black",s=2000,linestyle='-',marker="s",label=r"$\math
 axs.plot(x_dat,-13.6057/x_dat,color="black",markersize=2,linewidth=8,linestyle='-')
 
 popt, pcov = curve_fit(func,z,MMA2) 
-axs.plot(x_dat,func(x_dat,*popt),color="green",markersize=2,linewidth=8,linestyle='-',label=r"$\mathrm{{MMA2:}}{:.4f}/|\mathit{{z}}|$".format(popt[0]))
-axs.scatter(z,MMA2,color="green",s=2000,marker="^")
+axs.plot(x_dat,func(x_dat,*popt),color="green",markersize=2,linewidth=8,linestyle='-')
+axs.scatter(z,MMA2,color="green",s=2000,marker="^",label=r"$\mathrm{{MMA2:}}{:.4f}/|\mathit{{z}}|$".format(popt[0]))
 axs.set_xlabel(r"$\mathit{z} \ (a_0)$")    
 axs.set_xticks([5,6,7,8,9,10])
 axs.grid(which='major', linestyle='-')
