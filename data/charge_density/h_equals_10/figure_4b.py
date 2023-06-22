@@ -11,7 +11,7 @@ params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
 plt.rcParams.update({'font.size': 50})
 rc('font', weight='bold')
-
+rc('axes',linewidth=5,edgecolor='k')
 
 def open_mom_files(file):
 
@@ -69,19 +69,20 @@ for idx,direct in enumerate(upperdirs):
              unique_avg_q.append(sum_at_radius)
         ##Bring together r and charges.
         plot_data = np.vstack((unique_r, unique_avg_q)).T
-        axs.scatter(plot_data[:,0],plot_data[:,1],c=colors[idx],marker=sty[idx],s=200,label=r"$\mathrm{{MMA2_{{Q_{{mol}}={}}}}}$".format(which_is_it))
+        axs.scatter(plot_data[:,0],plot_data[:,1],c=colors[idx],marker=sty[idx],s=400,label=r"$\mathrm{{MMA2_{{Q_{{mol}}={}}}}}$".format(which_is_it))
 y_classical = []
 for i in plot_data[:,0]:
     y_exp = 1-(10/((i**2+100)**float(1/2)))
     y_classical.append(y_exp)
 classical_data = np.vstack((unique_r, y_classical)).T
-axs.plot(classical_data[:,0],classical_data[:,1],c='k',linewidth=7,label=r"$\mathrm{Conducting \ Sheet}$")
-axs.set_xlim([-2,472])
+axs.plot(classical_data[:,0],classical_data[:,1],c='k',linewidth=10,label=r"$\mathrm{Conducting \ Sheet}$")
+axs.set_xlim([-1,472])
 axs.set_ylim([-0.01,1.01])
-axs.grid(which='both')
+axs.grid(False)
+axs.xaxis.set_tick_params(direction="in",length=25,width=8)
+axs.yaxis.set_tick_params(direction="in",length=25,width=8)
+axs.set_xticks([100,200,300,400])
 axs.legend(loc=8, frameon=False, title=r"$\mathrm{(b): \ \mathit{h}=10 \ a_{0}}$")
 axs.set_xlabel(r"$\mathit{R} \ (a_{0})$")
-axs.set_ylabel(r"$q_{Cumulative} \ (e)$")
-#axs.text(70,0.96,r"$\mathrm{(a): \ z=10 \ a_{0}}$",horizontalalignment='center',verticalalignment='center',fontsize=45)
-#axs.text(160,0.27,r"$\mathrm{(b): \ z=10 \ a_{0}}$",horizontalalignment='center',verticalalignment='center',fontsize=45)
+axs.set_ylabel(r"$\mathit{q}_{cumulative} \ (e)$")
 plt.savefig("figure_4_b.png",dpi=300,bbox_inches='tight')

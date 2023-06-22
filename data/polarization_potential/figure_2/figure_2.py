@@ -11,8 +11,9 @@ from matplotlib.font_manager import FontProperties
 
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
-plt.rcParams.update({'font.size': 55})
+plt.rcParams.update({'font.size': 70})
 rc('font', weight='bold')
+rc('axes',linewidth=5,edgecolor='k')
 
 pot = []
 for filename in sorted(glob.glob("figure_2_a.csv", recursive=True)):
@@ -42,9 +43,12 @@ axs.plot(i[1],i[7],color="black",markersize=55,linewidth=5,linestyle='-',marker=
 axs.text(5.85,-0.15,r"$\mathrm{(a): Q_{mol}=0}$",horizontalalignment='center',verticalalignment='center',fontsize=70)
 axs.set_xlabel(r"$\mathit{z} \ (a_0)$")    
 axs.set_xticks([5,6,7,8,9,10])
-axs.grid(which='major', linestyle='-')
-axs.legend(loc="best", frameon=False, fontsize='large')
-axs.set_ylabel(r"$\mathit{E_{pol}} \ \mathrm{\left( eV \right)}$")
+axs.set_yticks([-0.1,-0.3,-0.5,-0.7,-0.9,-1.1,-1.3])
+axs.xaxis.set_tick_params(direction="in",length=25,width=8)
+axs.yaxis.set_tick_params(direction="in",length=25,width=8)
+axs.grid(False)
+#axs.legend(loc="best", frameon=False, fontsize=60)
+axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
 
 fig.set_tight_layout(True)
 plt.savefig("figure_2_a.png", dpi=300)
@@ -77,9 +81,12 @@ axs.plot(i[1],i[7],color="black",markersize=55,linewidth=5,linestyle='-',marker=
 axs.text(6.0,-0.55,r"$\mathrm{(b): Q_{mol}=+1}$",horizontalalignment='center',verticalalignment='center',fontsize=70)
 axs.set_xlabel(r"$\mathit{z} \ (a_0)$")    
 axs.set_xticks([5,6,7,8,9,10])
-axs.grid(which='major', linestyle='-')
-axs.legend(loc="lower right", frameon=False, fontsize='large')
-axs.set_ylabel(r"$\mathit{E_{pol}} \ \mathrm{\left( eV \right)}$")
+axs.set_yticks([-0.5,-0.7,-0.9,-1.1,-1.3])
+axs.xaxis.set_tick_params(direction="in",length=25,width=8)
+axs.yaxis.set_tick_params(direction="in",length=25,width=8)
+axs.grid(False)
+axs.legend(loc="lower right", frameon=False, fontsize=75)
+axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
 
 fig.set_tight_layout(True)
 plt.savefig("figure_2_b.png", dpi=300)

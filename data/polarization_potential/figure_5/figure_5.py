@@ -14,6 +14,7 @@ params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
 plt.rcParams.update({'font.size': 50})
 rc('font', weight='bold')
+rc('axes',linewidth=5,edgecolor='k')
 
 x_dat=np.arange(5,10,0.01)
 
@@ -48,9 +49,11 @@ axs.plot(x_dat,-27.211386245988/(4*np.abs(x_dat-1.9804329786078072)),color="blac
 axs.scatter(z,MMA2,color="green",s=2000,marker="^", label=r'$\mathrm{MMA2}$')
 axs.set_xlabel(r"$\mathit{z} \ (a_0)$")    
 axs.set_xticks([5,6,7,8,9,10])
-axs.grid(which='major', linestyle='-')
-axs.legend(loc="best", frameon=False, fontsize='large')
-axs.set_ylabel(r"$\mathit{E_{pol}} \ \mathrm{\left( eV \right)}$")
+axs.xaxis.set_tick_params(direction="in",length=25,width=8)
+axs.yaxis.set_tick_params(direction="in",length=25,width=8)
+axs.grid(False)
+axs.legend(loc="best", frameon=False, fontsize=65)
+axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
 
 fig.set_tight_layout(True)
 plt.savefig("figure_5.png", dpi=300)

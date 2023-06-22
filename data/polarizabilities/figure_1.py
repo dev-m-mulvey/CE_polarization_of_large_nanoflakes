@@ -13,6 +13,7 @@ params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
 plt.rcParams.update({'font.size': 50})
 rc('font', weight='bold')
+rc('axes',linewidth=5,edgecolor='k')
 
 xx_yy = []
 for filename in sorted(glob.glob("*.csv", recursive=True)):
@@ -42,8 +43,9 @@ for idx, i in enumerate(xx_yy):
         axs.plot(i[1],i[2],color="orange",markersize=45,linewidth=5,linestyle='-',marker="^",label=r"$\mathrm{MP2}$")
     axs.set_xlabel(r"$\mathit{N_{C}}$")    
     axs.set_xticks([6,24,54,96,150,216,294,384])
-    #axs.set_yticks([0,2e3,4e3,6e3,8e3,1e4,1.2e4])
-    axs.grid(which='major', linestyle='-')
+    axs.grid(False)
+    axs.xaxis.set_tick_params(direction="in",length=25,width=8)
+    axs.yaxis.set_tick_params(direction="in",length=25,width=8)
     axs.legend(loc="best", frameon=False, fontsize='large')
     axs.set_ylabel(r"$\mathrm{\alpha_{xx/yy}} \ \mathrm{\left( a.u.^{3} \right)}$")
 
