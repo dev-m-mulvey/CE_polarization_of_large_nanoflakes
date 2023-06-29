@@ -36,13 +36,15 @@ for filename in sorted(glob.glob("*.csv", recursive=True)):
 fig, axs = plt.subplots(1, 1, figsize=(25,25))
 for idx, i in enumerate(xx_yy):
     if i[0] == "PBEZERO":
-        axs.plot(i[1],i[2],color="black",markersize=65,linewidth=5,marker="s",label=r"$\mathrm{PBE0}$")
+        axs.plot(i[1],i[2],color="black",markersize=55,linewidth=5,marker="s",label=r"$\mathrm{PBE0}$")
+    elif i[0] == "HF":
+        axs.plot(i[1],i[2],color="red",markersize=55,linewidth=5,marker="X",label=r"$\mathrm{HF}$")
     elif i[0] == "QMA1":
         axs.plot(i[1],i[2],color="silver",markersize=55,linewidth=5,linestyle='-',marker="o",label=r"$\mathrm{MMA1}$")
     elif i[0] == "QP2":
-        axs.plot(i[1],i[2],color="orange",markersize=45,linewidth=5,linestyle='-',marker="^",label=r"$\mathrm{MP2}$")
+        axs.plot(i[1],i[2],color="orange",markersize=55,linewidth=5,linestyle='-',marker="^",label=r"$\mathrm{MP2}$")
     elif i[0] == "wB97M-V":
-        axs.plot(i[1],i[2],color="green",markersize=40,linewidth=5,marker="P",label=r"$\mathrm{wB97M-v}$")
+        axs.plot(i[1],i[2],color="green",markersize=55,linewidth=5,marker="P",label=r"$\mathrm{wB97M-v}$")
     axs.set_xlabel(r"$\mathit{N_{C}}$")    
     axs.set_xticks([6,24,54,96,150])
     axs.set_xlim([0,156])
