@@ -45,7 +45,7 @@ axs.xaxis.set_tick_params(direction="in",length=25,width=8)
 axs.yaxis.set_tick_params(direction="in",length=25,width=8)
 axs.grid(False)
 axs.legend(loc="best", frameon=False, fontsize=65)
-axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
+axs.set_ylabel(r"$\mathit{E}_{int} \ \mathrm{\left( eV \right)}$")
 
 fig.set_tight_layout(True)
 plt.savefig("figure_6.png", dpi=300)
