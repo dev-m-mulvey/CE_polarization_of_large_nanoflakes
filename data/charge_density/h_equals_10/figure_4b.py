@@ -9,9 +9,9 @@ from collections import Counter
 
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
-plt.rcParams.update({'font.size': 50})
+plt.rcParams.update({'font.size': 70})
 rc('font', weight='bold')
-rc('axes',linewidth=5,edgecolor='k')
+rc('axes',linewidth=10,edgecolor='k')
 
 def open_mom_files(file):
 
@@ -39,7 +39,7 @@ def open_mom_files(file):
 
 upperdirs = natsort.natsorted(glob.glob("*/", recursive=True),reverse=True)
 
-fig, axs = plt.subplots(figsize=(20,20))
+fig, axs = plt.subplots(figsize=(25,25))
 
 colors=['orange','g','orange','g','y']
 line=['-',':','-',':']
@@ -82,7 +82,7 @@ axs.grid(False)
 axs.xaxis.set_tick_params(direction="in",length=25,width=8)
 axs.yaxis.set_tick_params(direction="in",length=25,width=8)
 axs.set_xticks([100,200,300,400])
-axs.legend(loc=8, frameon=False, title=r"$\mathrm{(b): \ \mathit{z}=10 \ a_{0}}$")
+axs.legend(loc=8, frameon=False, title=r"$\mathrm{(b): \ \mathit{z}=10 \ a_{0}}$", fontsize=65)
 axs.set_xlabel(r"$\mathit{R} \ (a_{0})$")
-axs.set_ylabel(r"$\mathit{q}_{cumulative} \ (e)$")
-plt.savefig("figure_4_b.png",dpi=300,bbox_inches='tight')
+#axs.set_ylabel(r"$\mathit{q}_{cumulative} \ (e)$")
+plt.savefig("figure_4_b.png",dpi=300)
