@@ -32,19 +32,20 @@ for filename in sorted(glob.glob("figure_5.csv", recursive=True)):
     impot = data_array[:,2]*27.211386245988
 
 fig, axs = plt.subplots(1, 1, figsize=(25,25))
-axs.scatter(z,impot,color="black",s=3500,linestyle='-',marker="s",linewidth=10,edgecolors='k',facecolors='none',label=r"$\mathrm{-6.8028/|}\mathit{z}\mathrm{-1.98|}$") 
-axs.plot(x_dat,-27.211386245988/(4*np.abs(x_dat-1.9804329786078072)),color="black",markersize=2,linewidth=10,linestyle='-')
+
+axs.plot(x_dat,-27.211386245988/(4*np.abs(x_dat-1.9804329786078072)),color="black",linestyle='-',markersize=0.01,marker="s",linewidth=10,mfc='none',markeredgewidth=10.0,label=r"$\mathrm{-6.8028/|}\mathit{z}\mathrm{-1.98|}$")
+axs.scatter(z,impot,color="black",s=3500,facecolors='none',edgecolor='k',linewidth=10,marker="s") 
 
 popt4, pcov4 = curve_fit(func_fixed,z,MMA2) 
-axs.scatter(z,MMA2,color="green",s=3000,marker="^", label=r"$MMA2: -6.8028\mathrm{{/|}}\mathit{{z}}-{:.4f}\mathrm{{|}}$".format(popt4[0]))
-axs.plot(x_dat,func_fixed(x_dat,*popt4),color="green",markersize=2,linewidth=10,linestyle='--')
+axs.plot(x_dat,func_fixed(x_dat,*popt4),color="green",marker='^',markersize=0.01,linewidth=10,linestyle='--',label=r"$MMA2: -6.8028\mathrm{{/|}}\mathit{{z}}-{:.4f}\mathrm{{|}}$".format(popt4[0]))
+axs.scatter(z,MMA2,color="green",s=3000,marker="^")
 
 axs.set_xlabel(r"$\mathit{z} \ (a_0)$")  
 axs.set_xticks([5,6,7,8,9,10])
 axs.xaxis.set_tick_params(direction="in",length=25,width=8)
 axs.yaxis.set_tick_params(direction="in",length=25,width=8)
 axs.grid(False)
-axs.legend(loc="best", frameon=False, fontsize=60)
+axs.legend(loc="best", frameon=False, fontsize=60,markerscale=6000)
 axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
 
 fig.set_tight_layout(True)

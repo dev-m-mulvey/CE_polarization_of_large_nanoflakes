@@ -35,21 +35,23 @@ for filename in sorted(glob.glob("figure_3.csv", recursive=True)):
 
 fig, axs = plt.subplots(1, 1, figsize=(25,25))
 
-axs.scatter(z,impot,color="black",s=3500,marker="s",linewidth=10,edgecolors='k',facecolors='none',label=r"$\mathrm{-6.8028/}|\mathit{z}|$") 
-axs.plot(x_dat,-27.211386245988/(4*x_dat),color="black",linestyle='-',linewidth=10)
+axs.plot(x_dat,-27.211386245988/(4*x_dat),color="black",linestyle='-',markersize=0.01,marker="s",linewidth=10,mfc='none',markeredgewidth=10.0,label=r"$\mathrm{-6.8028/}|\mathit{z}|$")
+axs.scatter(z,impot,color="black",s=3500,facecolors='none',edgecolor='k',linewidth=10,marker="s") 
+
 popt, pcov = curve_fit(func,z,MMA1) 
 popt2, pcov2 = curve_fit(func,z,MMA2) 
-axs.plot(x_dat,func(x_dat,*popt),color="red",markersize=55,linewidth=10,linestyle='-')
-axs.plot(x_dat,func(x_dat,*popt2),color="green",markersize=55,linewidth=10,linestyle='--')
-axs.scatter(z,MMA1,color="red",s=3000,marker="o",label=r"$\mathrm{{MMA1:}}{:.4f}/|\mathit{{z}}|$".format(popt[0]))
-axs.scatter(z,MMA2,color="green",s=3000,marker="^",label=r"$\mathrm{{MMA2:}}{:.4f}/|\mathit{{z}}|$".format(popt2[0]))
+axs.plot(x_dat,func(x_dat,*popt),color="red",marker='o',markersize=0.01,linewidth=10,linestyle='-',label=r"$\mathrm{{MMA1:}}{:.4f}/|\mathit{{z}}|$".format(popt[0]))
+axs.plot(x_dat,func(x_dat,*popt2),color="green",marker='^',markersize=0.01,linewidth=10,linestyle='--',label=r"$\mathrm{{MMA2:}}{:.4f}/|\mathit{{z}}|$".format(popt2[0]))
+axs.scatter(z,MMA1,color="red",s=3000,marker="o")
+axs.scatter(z,MMA2,color="green",s=3000,marker="^")
+
 axs.set_xlabel(r"$\mathit{z} \ (a_0)$")    
 axs.set_xticks([5,6,7,8,9,10])
 axs.set_yticks([-0.6,-0.8,-1.0,-1.2,-1.4])
 axs.xaxis.set_tick_params(direction="in",length=25,width=8,labelsize=70)
 axs.yaxis.set_tick_params(direction="in",length=25,width=8,labelsize=70)
 axs.grid(False)
-axs.legend(loc="best", frameon=False, fontsize=70)
+axs.legend(loc="best", frameon=False, fontsize=70,markerscale=6000)
 axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
 
 fig.set_tight_layout(True)
