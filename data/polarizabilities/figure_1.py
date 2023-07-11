@@ -11,9 +11,9 @@ from matplotlib.font_manager import FontProperties
 
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
-plt.rcParams.update({'font.size': 70})
+plt.rcParams.update({'font.size': 8})
 rc('font', weight='bold')
-rc('axes',linewidth=10,edgecolor='k')
+rc('axes',linewidth=1,edgecolor='k')
 
 xx_yy = []
 for filename in sorted(glob.glob("*.csv", recursive=True)):
@@ -33,21 +33,21 @@ for filename in sorted(glob.glob("*.csv", recursive=True)):
         xx_yy.append([Source,n,axx])
 
 
-fig, axs = plt.subplots(1, 1, figsize=(30,25))
+fig, axs = plt.subplots(1, 1, figsize=(3.33,3.33))
 for idx, i in enumerate(xx_yy):
     if i[0] == "PBEZERO":
-        axs.plot(i[1],i[2],color="black",markersize=70,linewidth=10,marker="s",markeredgecolor='k',fillstyle='none',markeredgewidth=8,label=r"$\mathrm{PBE0}$")
+        axs.plot(i[1],i[2],color="black",markersize=8,linewidth=1,marker="s",markeredgecolor='k',fillstyle='none',markeredgewidth=1,label=r"$\mathrm{PBE0}$")
     elif i[0] == "QMA1":
-        axs.plot(i[1],i[2],color="blue",markersize=65,linewidth=10,linestyle='--',marker="o",label=r"$\mathrm{MMA1}$")
+        axs.plot(i[1],i[2],color="blue",markersize=7,linewidth=1,linestyle='--',marker="o",label=r"$\mathrm{MMA1}$")
     elif i[0] == "QP2":
-        axs.plot(i[1],i[2],color="orange",markersize=55,linewidth=10,linestyle='-',marker="^",label=r"$\mathrm{MP2}$")
+        axs.plot(i[1],i[2],color="orange",markersize=6,linewidth=1,linestyle='-',marker="^",label=r"$\mathrm{MP2}$")
     axs.set_xticks([6,24,54,96,150,216,294,384])
     axs.grid(False)
-    axs.xaxis.set_tick_params(direction="in",length=25,width=8,labelsize=70)
-    axs.yaxis.set_tick_params(direction="in",length=25,width=8,labelsize=70)
-    axs.legend(loc="best", frameon=False, fontsize=70)
-    axs.set_ylabel(r"$\mathrm{\alpha_{xx/yy}} \ \mathrm{\left( a.u.^{3} \right)}$",fontsize=70)
-    axs.set_xlabel(r"$\mathit{N_{C}}$",fontsize=70)    
+    axs.xaxis.set_tick_params(direction="in",length=3,width=1,labelsize=7)
+    axs.yaxis.set_tick_params(direction="in",length=3,width=1,labelsize=8)
+    axs.legend(loc="best", frameon=False)
+    axs.set_ylabel(r"$\mathrm{\alpha_{xx/yy}} \ \mathrm{\left( a.u.^{3} \right)}$")
+    axs.set_xlabel(r"$\mathit{N_{C}}$")    
 
 fig.set_tight_layout(True)
 plt.savefig("figure_1.png", dpi=300,bbox_inches='tight')

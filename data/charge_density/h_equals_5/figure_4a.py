@@ -9,9 +9,9 @@ from collections import Counter
 
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
-plt.rcParams.update({'font.size': 70})
+plt.rcParams.update({'font.size': 10})
 rc('font', weight='bold')
-rc('axes',linewidth=10,edgecolor='k')
+rc('axes',linewidth=1,edgecolor='k')
 
 def open_mom_files(file):
 
@@ -39,11 +39,11 @@ def open_mom_files(file):
 
 upperdirs = natsort.natsorted(glob.glob("*/", recursive=True),reverse=True)
 
-fig, axs = plt.subplots(figsize=(25,25))
+fig, axs = plt.subplots(figsize=(3.33,3.33))
 
-colors=['orange','g','orange','g','y']
-line=['-',':','-',':']
-sty=['o','o','o','x']
+colors=['orange','g']
+sty=['o','^']
+fccolor=['orange','none']
 for idx,direct in enumerate(upperdirs):
     for filename in sorted(glob.glob("{}*.out".format(direct), recursive=True)):
         Source = os.path.splitext(filename)[0].split("/")
@@ -69,20 +69,20 @@ for idx,direct in enumerate(upperdirs):
              unique_avg_q.append(sum_at_radius)
         ##Bring together r and charges.
         plot_data = np.vstack((unique_r, unique_avg_q)).T
-        axs.scatter(plot_data[:,0],plot_data[:,1],c=colors[idx],marker=sty[idx],s=400,label=r"$\mathrm{{MMA2_{{Q_{{mol}}={}}}}}$".format(which_is_it))
+        axs.scatter(plot_data[:,0],plot_data[:,1],color=colors[idx],facecolors=fccolor[idx],marker=sty[idx],s=15,label=r"$\mathrm{{MMA2_{{Q_{{mol}}={}}}}}$".format(which_is_it))
 y_classical = []
 for i in plot_data[:,0]:
     y_exp = 1-(5/((i**2+25)**float(1/2)))
     y_classical.append(y_exp)
 classical_data = np.vstack((unique_r, y_classical)).T
-axs.plot(classical_data[:,0],classical_data[:,1],c='k',linewidth=10,label=r"$\mathrm{Conducting \ Sheet}$")
-axs.set_xlim([-1,472])
-axs.set_ylim([-0.01,1.01])
+axs.plot(classical_data[:,0],classical_data[:,1],c='k',linewidth=1.5,label=r"$\mathrm{Conducting \ Sheet}$")
+axs.set_xlim([-5,476])
+axs.set_ylim([-0.05,1.05])
 axs.grid(False)
-axs.xaxis.set_tick_params(direction="in",length=25,width=8)
-axs.yaxis.set_tick_params(direction="in",length=25,width=8)
+axs.xaxis.set_tick_params(direction="in",length=3,width=1)
+axs.yaxis.set_tick_params(direction="in",length=3,width=1)
 axs.set_xticks([100,200,300,400])
-axs.legend(loc=8, frameon=False, title=r"$\mathrm{(a): \ \mathit{z}=5 \ a_{0}}$", fontsize=65)
+axs.legend(loc=8, frameon=False, markerscale=1.5, title=r"$\mathrm{(a): \ \mathit{z}=5 \ a_{0}}$")
 axs.set_xlabel(r"$\mathit{R} \ (a_{0})$")
 axs.set_ylabel(r"$\mathit{q}_{Cumulative} \ (e)$")
-plt.savefig("figure_4_a.png",dpi=300)
+plt.savefig("figure_4_a.png",dpi=300,bbox_inches='tight')
