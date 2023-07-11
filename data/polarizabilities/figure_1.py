@@ -38,16 +38,18 @@ for idx, i in enumerate(xx_yy):
     if i[0] == "PBEZERO":
         axs.plot(i[1],i[2],color="black",markersize=8,linewidth=1,marker="s",markeredgecolor='k',fillstyle='none',markeredgewidth=1,label=r"$\mathrm{PBE0}$")
     elif i[0] == "QMA1":
-        axs.plot(i[1],i[2],color="blue",markersize=7,linewidth=1,linestyle='--',marker="o",label=r"$\mathrm{MMA1}$")
+        axs.plot(i[1],i[2],color="blue",markersize=7,linewidth=1,linestyle='-',marker="o",label=r"$\mathrm{MMA1}$")
     elif i[0] == "QP2":
         axs.plot(i[1],i[2],color="orange",markersize=6,linewidth=1,linestyle='-',marker="^",label=r"$\mathrm{MP2}$")
-    axs.set_xticks([6,24,54,96,150,216,294,384])
-    axs.grid(False)
-    axs.xaxis.set_tick_params(direction="in",length=3,width=1,labelsize=7)
-    axs.yaxis.set_tick_params(direction="in",length=3,width=1,labelsize=8)
-    axs.legend(loc="best", frameon=False)
-    axs.set_ylabel(r"$\mathrm{\alpha_{xx/yy}} \ \mathrm{\left( a.u.^{3} \right)}$")
-    axs.set_xlabel(r"$\mathit{N_{C}}$")    
+axs.set_xticks([6,24,54,96,150,216,294,384])
+axs.grid(False)
+axs.xaxis.set_tick_params(direction="in",length=3,width=1,labelsize=7,pad=6.25)
+axs.yaxis.set_tick_params(direction="in",length=3,width=1,labelsize=8,pad=6.25)
+print(axs.xaxis.labelpad)
+print(axs.yaxis.labelpad)
+axs.legend(loc="best", frameon=False)
+axs.set_ylabel(r"$\mathrm{\alpha_{xx/yy}} \ \mathrm{\left( a.u.^{3} \right)}$")
+axs.set_xlabel(r"$\mathit{N_{C}}$")
 
 fig.set_tight_layout(True)
 plt.savefig("figure_1.png", dpi=300,bbox_inches='tight')
