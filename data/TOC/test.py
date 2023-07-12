@@ -22,6 +22,7 @@ def open_mom_files(file):
 
             curr_atom["x"] = float(x)
             curr_atom["y"] = float(y)
+            curr_atom["z"] = float(z)
             lines = []
             for i in range(1):
                 lines.append(next(f, " ").strip())
@@ -38,7 +39,7 @@ def open_mom_files(file):
 atom_info = open_mom_files("./c60000.out")
 space_charge_dat = []
 for atom in atom_info:
-    space_charge_dat.append([atom["x"],atom["y"],atom["charges"][0]])
+    space_charge_dat.append([atom["x"],atom["y"],atom["z"],atom["charges"][0]])
 #Data array containing all copies of ring 
 unfiltered_data_array = np.array(space_charge_dat)
 
@@ -46,24 +47,26 @@ unfiltered_data_array = np.array(space_charge_dat)
 x = unfiltered_data_array[:,0]
 y = unfiltered_data_array[:,1]
 z = unfiltered_data_array[:,2]
-z_atoms = np.full(np.shape(z), 0.0000025922)
- 
-#fig = plt.figure(figsize=(1.75,1.75))
-fig = plt.figure(figsize=(10,10))
-ax = fig.add_subplot(111, projection='3d', computed_zorder=False)
+np.savetxt("C6000.xyz", unfiltered_data_array, fmt="%10.8f")
 
-surf = ax.plot_trisurf(x, y, z, cmap=cm.copper, linewidth=1)
-ax.scatter(x, y, z_atoms, marker='o', s=10, alpha=1, depthshade=False, color='white')
-#fig.colorbar(surf)
-ax.scatter(0, 0, 0.045, marker='o', s=100, alpha=1, color='blue')
-
-ax.view_init(elev=50, azim=0, roll=0)
-ax.set_xlim([-100, 100])
-ax.set_ylim([-100, 100])
-ax.set_zlim([0, 0.06])
-ax.set_axis_off()
-
-fig.tight_layout()
-
-#plt.show() 
-plt.savefig("test_image.png",dpi=300)
+#z_atoms = np.full(np.shape(z), 0.0000025922)
+# 
+##fig = plt.figure(figsize=(1.75,1.75))
+#fig = plt.figure(figsize=(10,10))
+#ax = fig.add_subplot(111, projection='3d', computed_zorder=False)
+#
+#surf = ax.plot_trisurf(x, y, z, cmap=cm.copper, linewidth=1)
+#ax.scatter(x, y, z_atoms, marker='o', s=10, alpha=1, depthshade=False, color='white')
+##fig.colorbar(surf)
+#ax.scatter(0, 0, 0.045, marker='o', s=100, alpha=1, color='blue')
+#
+#ax.view_init(elev=50, azim=0, roll=0)
+#ax.set_xlim([-100, 100])
+#ax.set_ylim([-100, 100])
+#ax.set_zlim([0, 0.06])
+#ax.set_axis_off()
+#
+#fig.tight_layout()
+#
+##plt.show() 
+#plt.savefig("test_image.png",dpi=300)
