@@ -41,9 +41,6 @@ upperdirs = natsort.natsorted(glob.glob("*/", recursive=True),reverse=True)
 
 fig, axs = plt.subplots(figsize=(20,20))
 
-colors=['orange','g','orange','g','y']
-line=['-',':','-',':']
-sty=['o','o','o','x']
 for idx,direct in enumerate(upperdirs):
     for filename in sorted(glob.glob("{}*.out".format(direct), recursive=True)):
         Source = os.path.splitext(filename)[0].split("/")
@@ -59,46 +56,54 @@ for idx,direct in enumerate(upperdirs):
 
         negative_x_loc = np.where(np.sign(unfiltered_data_array[:,0])<0)[0]
         negative_x_array = unfiltered_data_array[negative_x_loc,:]
-        r_negative = np.round(np.linalg.norm(negative_x_array[:,:2], axis=1),6)
+        r_negative = np.linalg.norm(negative_x_array[:,:2], axis=1)
+        print(len(r_negative))
         unique_r_neg, counts_r_neg = np.unique(r_negative, return_counts=True)
         unique_avg_q_neg = []
+        sum_neg_charges=0
         for i in range(len(unique_r_neg)):
              charges=negative_x_array[np.where(r_negative==unique_r_neg[i])[0],2]
+             if np.all(charges*charges[0]<0):
+                 print("charges of differing sign found within same radius")
+             #else:
+             #    print("All charges the same")
              num_charges=len(charges)
+             sum_neg_charges += num_charges
              a_charge = np.sum(charges)
              avg_charge = a_charge/num_charges
              unique_avg_q_neg.append(avg_charge)
+        q_neg = np.array(unique_avg_q_neg)
 
         positive_x_loc = np.where(np.sign(unfiltered_data_array[:,0])>0)[0]
         positive_x_array = unfiltered_data_array[positive_x_loc,:]
         r_positive = np.linalg.norm(positive_x_array[:,:2], axis=1)
+        print(len(r_positive))
         unique_r_pos, counts_r_pos = np.unique(r_positive, return_counts=True)
         unique_avg_q_pos = []
+        sum_pos_charges=0
         for i in range(len(unique_r_pos)):
              charges=positive_x_array[np.where(r_positive==unique_r_pos[i])[0],2]
+             if np.all(charges*charges[0]<0):
+                 print("charges of differing sign found within same radius")
+             #else:
+             #    print("All charges the same")
              num_charges=len(charges)
+             sum_pos_charges += num_charges
              a_charge = np.sum(charges)
              avg_charge = a_charge/num_charges
              unique_avg_q_pos.append(avg_charge)
+        q_pos =np.array(unique_avg_q_pos)
 
-#Now that are split up check if the averages make sense and they are grouped such that exent along x-axis is defining feature. If so plot them individually, just use the same style of data points. 
+print(np.shape(unique_r_neg))
+print(np.shape(unique_r_pos))
 
-
-        for i in negative_x_loc:
-                    r = np.round(np.linalg.norm(unfiltered_data_array[:,:2], axis=1),6)
-
-        #    r = np.round(np.linalg.norm(unfiltered_data_array[:,:2], axis=1),6)
-
-        #x = unfiltered_data_array[only_x_loc,0][0]
-        #q = unfiltered_data_array[only_x_loc,2][0]
-        #axs.scatter(x,q,c=colors[idx],marker=sty[idx],s=400,label=r"$\mathrm{{MMA2_{{Q_{{mol}}={}}}}}$".format(which_is_it))
-##axs.set_xlim([-1,472])
-##axs.set_ylim([0,0.00001])
-#axs.grid(False)
-#axs.xaxis.set_tick_params(direction="in",length=25,width=8)
-#axs.yaxis.set_tick_params(direction="in",length=25,width=8)
-##axs.set_xticks([100,200,300,400])
-#axs.legend(loc='best', frameon=False, title=r"$\mathrm{(a): \ \mathit{h}=5 \ a_{0}}$",fontsize='40')
-#axs.set_xlabel(r"$\mathit{x} \ (a_{0})$")
-#axs.set_ylabel(r"$\mathit{q} \ (e)$")
-#plt.savefig("charge_dist_heq5_c60k_reference.png",dpi=300,bbox_inches='tight')
+axs.scatter(unique_r_pos,q_pos,c="orange",marker="o",s=400,label=r"$MMA2_{Q_{mol}=0}$")
+axs.scatter(-1.0*unique_r_neg,q_neg,c="orange",marker="o",s=400)
+axs.set_ylim([-0.0002,0.0002])
+axs.grid(False)
+axs.xaxis.set_tick_params(direction="in",length=25,width=8)
+axs.yaxis.set_tick_params(direction="in",length=25,width=8)
+axs.legend(loc='best', frameon=False, title=r"$\mathrm{(a): \ \mathit{h}=5 \ a_{0}}$",fontsize='40')
+axs.set_xlabel(r"$\mathit{r \cdot sgn(x)} \ (a_{0})$")
+axs.set_ylabel(r"$\mathit{q} \ (e)$")
+plt.savefig("c60k_heq5_zoom.png",dpi=300,bbox_inches='tight')
