@@ -87,4 +87,4 @@ axs.set_xlabel(r"$\mathit{R} \ (a_{0})$")
 axs.set_ylabel(r"$\mathit{q}_{Cumulative} \ (e)$")
 
 fig.set_tight_layout(True)
-plt.savefig("figure_4_b.png",dpi=300)
+plt.savefig("figure_3_b.png",dpi=300)
