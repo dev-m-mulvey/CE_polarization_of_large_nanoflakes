@@ -13,7 +13,7 @@ from scipy.optimize import curve_fit
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
 plt.rcParams.update({'font.size': 10})
-rc('font', weight='bold')
+rc('font', family='Nimbus Sans', weight='bold')
 rc('axes',linewidth=1,edgecolor='k')
 
 x_dat=np.arange(5,10,0.01)
@@ -50,4 +50,4 @@ axs.legend(loc="best", frameon=False, fontsize=8, markerscale=600)
 axs.set_ylabel(r"$\mathit{E}_{int} \ \mathrm{\left( eV \right)}$")
 
 fig.set_tight_layout(True)
-plt.savefig("figure_6.png", dpi=300,bbox_inches='tight')
+plt.savefig("figure_6.png", dpi=300)

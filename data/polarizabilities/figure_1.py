@@ -12,7 +12,7 @@ from matplotlib.font_manager import FontProperties
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
 plt.rcParams.update({'font.size': 8})
-rc('font', weight='bold')
+rc('font', family='Nimbus Sans', weight='bold')
 rc('axes',linewidth=1,edgecolor='k')
 
 xx_yy = []
@@ -52,4 +52,4 @@ axs.set_ylabel(r"$\mathrm{\alpha_{xx/yy}} \ \mathrm{\left( a.u.^{3} \right)}$")
 axs.set_xlabel(r"$\mathit{N_{C}}$")
 
 fig.set_tight_layout(True)
-plt.savefig("figure_1.png", dpi=300,bbox_inches='tight')
+plt.savefig("figure_1.png", dpi=300)

@@ -13,7 +13,7 @@ from scipy.optimize import curve_fit
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
 plt.rcParams.update({'font.size': 8})
-rc('font', weight='bold')
+rc('font', family='Nimbus Sans', weight='bold')
 rc('axes',linewidth=1,edgecolor='k')
 
 x_dat=np.arange(5,10,0.01)
@@ -35,20 +35,15 @@ for filename in sorted(glob.glob("figure_3.csv", recursive=True)):
 
 fig, axs = plt.subplots(figsize=(1.625,0.875))
 
-axs.plot(x_dat,-27.211386245988/(4*x_dat),color="black",linestyle='-',markersize=0.01,marker="s",linewidth=1,mfc='none',markeredgewidth=1,label=r"$Classical$")
-axs.scatter(z,impot,color="black",s=30,facecolors='none',edgecolor='k',linewidth=1,marker="s") 
-
 popt2, pcov2 = curve_fit(func,z,MMA2) 
-axs.plot(x_dat,func(x_dat,*popt2),color="green",marker='^',markersize=0.01,linewidth=1,linestyle='-',label=r"$MM\AA 2$")
-axs.scatter(z,MMA2,color="green",s=15,marker="^")
+axs.plot(x_dat,func(x_dat,*popt2),color="green",marker='none',linewidth=3.5,linestyle='-',label=r"$\mathrm{C_{60000}}$")
 
-axs.set_xlabel(r"$\mathit{z} \ (a_0)$")    
-axs.set_xticks([5,6,7,8,9,10])
-axs.set_yticks([-0.6,-1.0,-1.4])
-axs.xaxis.set_tick_params(direction="in",length=3,width=1,pad=6.25)
-axs.yaxis.set_tick_params(direction="in",length=3,width=1,pad=6.25)
+axs.plot(x_dat,-27.211386245988/(4*x_dat),color="black",linestyle=':',marker="none",linewidth=1.5,label=r"$\mathrm{Graphene}$")
+
+axs.set_xticks([])
+axs.set_yticks([])
 axs.grid(False)
-axs.legend(loc=4, frameon=False, markerscale=400, fontsize=6)
-axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
+axs.legend(loc="best", frameon=False, handlelength=1, fontsize=7)
+axs.set_ylabel(r"$\mathit{E}_{\mathrm{Pol}}$")
 
-plt.savefig("figure_3.png", dpi=300,bbox_inches='tight')
+plt.savefig("figure_3.png", dpi=300)

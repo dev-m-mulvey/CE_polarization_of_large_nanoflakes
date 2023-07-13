@@ -12,7 +12,7 @@ from matplotlib.font_manager import FontProperties
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
 plt.rcParams.update({'font.size': 10})
-rc('font', weight='bold')
+rc('font', family='Nimbus Sans', weight='bold')
 rc('axes',linewidth=1,edgecolor='k')
 
 pot = []

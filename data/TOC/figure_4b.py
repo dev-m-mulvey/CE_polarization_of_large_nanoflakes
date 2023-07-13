@@ -10,7 +10,7 @@ from collections import Counter
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
 plt.rcParams.update({'font.size': 8})
-rc('font', weight='bold')
+rc('font', family='Nimbus Sans', weight='bold')
 rc('axes',linewidth=1,edgecolor='k')
 
 def open_mom_files(file):
@@ -69,20 +69,18 @@ for idx,direct in enumerate(upperdirs):
              unique_avg_q.append(sum_at_radius)
         ##Bring together r and charges.
         plot_data = np.vstack((unique_r, unique_avg_q)).T
-        axs.scatter(plot_data[:,0],plot_data[:,1],color=colors[idx],facecolors=fccolor[idx],marker=sty[idx],s=15,label=r"$MM\AA 2$")
+        axs.plot(plot_data[:,0],plot_data[:,1],color=colors[idx],linewidth=3.5,label=r"$\mathrm{C_{60000}}$")
 y_classical = []
 for i in plot_data[:,0]:
     y_exp = 1-(10/((i**2+100)**float(1/2)))
     y_classical.append(y_exp)
 classical_data = np.vstack((unique_r, y_classical)).T
-axs.plot(classical_data[:,0],classical_data[:,1],c='k',linewidth=1.5,label=r"$\mathrm{Classical}$")
+axs.plot(classical_data[:,0],classical_data[:,1],c='k',linestyle=':',linewidth=1.5,label=r"$\mathrm{Graphene}$")
 axs.set_xlim([-5,476])
 axs.set_ylim([-0.05,1.05])
 axs.grid(False)
-axs.xaxis.set_tick_params(direction="in",length=3,width=1,pad=6.25)
-axs.yaxis.set_tick_params(direction="in",length=3,width=1,pad=6.25)
-axs.set_xticks([100,200,300,400])
-axs.legend(loc=8, frameon=False, markerscale=0.7, fontsize=7, title=r"$\mathrm{(a): \ \mathit{z}=10 \ a_{0}}$")
-axs.set_xlabel(r"$\mathit{R} \ (a_{0})$")
-axs.set_ylabel(r"$\mathit{q}_{Cumulative} \ (e)$")
-plt.savefig("figure_4_b.png",dpi=300,bbox_inches='tight')
+axs.set_xticks([])
+axs.set_yticks([])
+axs.legend(loc=8, frameon=False, handlelength=1)
+axs.set_ylabel(r"$\mathit{q}_{\mathrm{Cumulative}}$")
+plt.savefig("figure_4_b.png",dpi=300)

@@ -10,7 +10,7 @@ from collections import Counter
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
 plt.rcParams.update({'font.size': 10})
-rc('font', weight='bold')
+rc('font', family='Nimbus Sans', weight='bold')
 rc('axes',linewidth=1,edgecolor='k')
 
 def open_mom_files(file):
@@ -85,4 +85,6 @@ axs.set_xticks([100,200,300,400])
 axs.legend(loc=8, frameon=False, markerscale=1.5, title=r"$\mathrm{(a): \ \mathit{z}=10 \ a_{0}}$")
 axs.set_xlabel(r"$\mathit{R} \ (a_{0})$")
 axs.set_ylabel(r"$\mathit{q}_{Cumulative} \ (e)$")
-plt.savefig("figure_4_b.png",dpi=300,bbox_inches='tight')
+
+fig.set_tight_layout(True)
+plt.savefig("figure_4_b.png",dpi=300)
