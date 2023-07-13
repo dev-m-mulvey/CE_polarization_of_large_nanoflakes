@@ -36,14 +36,15 @@ for filename in sorted(glob.glob("figure_3.csv", recursive=True)):
 fig, axs = plt.subplots(figsize=(1.625,0.875))
 
 popt2, pcov2 = curve_fit(func,z,MMA2) 
-axs.plot(x_dat,func(x_dat,*popt2),color="green",marker='none',linewidth=3.5,linestyle='-',label=r"$\mathrm{C_{60000}}$")
+axs.plot(x_dat,func(x_dat,*popt2),color="green",marker='none',linewidth=3.5,linestyle='-',label=r"$\mathrm{Model}$")
 
-axs.plot(x_dat,-27.211386245988/(4*x_dat),color="black",linestyle=':',marker="none",linewidth=1.5,label=r"$\mathrm{Graphene}$")
+rc('font', weight='bold')
+axs.plot(x_dat,-27.211386245988/(4*x_dat),color="black",linestyle=':',marker="none",linewidth=1.5,label=r"$\mathrm{Image \ Pot.}$")
 
 axs.set_xticks([])
 axs.set_yticks([])
 axs.grid(False)
-axs.legend(loc="best", frameon=False, handlelength=1, fontsize=7)
+axs.legend(loc="best", frameon=False, handlelength=1, fontsize=6)
 axs.set_ylabel(r"$\mathit{E}_{\mathrm{Pol}}$")
 
 plt.savefig("figure_3.png", dpi=300)

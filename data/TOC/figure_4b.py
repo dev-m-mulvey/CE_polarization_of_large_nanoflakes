@@ -69,13 +69,13 @@ for idx,direct in enumerate(upperdirs):
              unique_avg_q.append(sum_at_radius)
         ##Bring together r and charges.
         plot_data = np.vstack((unique_r, unique_avg_q)).T
-        axs.plot(plot_data[:,0],plot_data[:,1],color=colors[idx],linewidth=3.5,label=r"$\mathrm{C_{60000}}$")
+        axs.plot(plot_data[:,0],plot_data[:,1],color=colors[idx],linewidth=3.5,label=r"$\mathrm{Model}$")
 y_classical = []
 for i in plot_data[:,0]:
     y_exp = 1-(10/((i**2+100)**float(1/2)))
     y_classical.append(y_exp)
 classical_data = np.vstack((unique_r, y_classical)).T
-axs.plot(classical_data[:,0],classical_data[:,1],c='k',linestyle=':',linewidth=1.5,label=r"$\mathrm{Graphene}$")
+axs.plot(classical_data[:,0],classical_data[:,1],c='k',linestyle=':',linewidth=1.5,label=r"$\mathrm{Image \ Pot.}$")
 axs.set_xlim([-5,476])
 axs.set_ylim([-0.05,1.05])
 axs.grid(False)
