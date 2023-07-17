@@ -26,5 +26,21 @@ Contains two directories with the data (.out), plotting scripts, and images that
 ## Disclaimer
 **Beyond what I provide here, if you need information to run the calculations I urge you to read the manual of the programs used. I can't guarantee there is documentation for all the modifications I made and that manuals are completely up to date.**
 * [Psi4](https://psicode.org/psi4manual/1.4.0/index.html)
+Ref (1): Turney, J. M.; Simmonett, A. C.; Parrish, R. M.; Hohenstein, E. G.; Evangelista, F. A.;
+Fermann, J. T.; Mintz, B. J.; Burns, L. A.; Wilke, J. J.; Abrams, M. L. et al. Psi4:
+an open-source ab initio electronic structure program. Wiley Interdiscip. Rev. Comput.
+Mol. Sci. 2012, 2, 556–565, DOI: 10.1002/wcms.93.
+Ref(2): Smith, D. G. A.; Burns, L. A.; Simmonett, A. C.; Parrish, R. M.; Schieber, M. C.;
+Galvelis, R.; Kraus, P.; Kruse, H.; Di Remigio, R.; Alenaizan, A. et al. PSI4 1.4: Open-
+source software for high-throughput quantum chemistry. J. Chem. Phys. 2020, 152,
+184108, DOI: 10.1063/5.0006002 
+
 * [Matplotlib](https://matplotlib.org/stable/users/index.html)
+Ref: Hunter, J. D. Matplotlib: A 2D graphics environment. Comput. Sci. Eng. 2007, 9,
+90–95, DOI: 10.1109/MCSE.2007.55.
+
 * [SciPy](https://docs.scipy.org/doc/scipy/)
+Ref: Virtanen, P.; Gommers, R.; Oliphant, T. E.; Haberland, M.; Reddy, T.; Courna-
+peau, D.; Burovski, E.; Peterson, P.; Weckesser, W.; Bright, J. et al. SciPy 1.0: Funda-
+mental Algorithms for Scientific Computing in Python. Nat. Methods 2020, 17, 261–
+272, DOI: 10.1038/s41592-019-0686-2.
