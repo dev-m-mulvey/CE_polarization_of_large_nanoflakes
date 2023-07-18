@@ -12,7 +12,7 @@ from scipy.optimize import curve_fit
 
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
-plt.rcParams.update({'font.size': 8})
+plt.rcParams.update({'font.size': 6})
 rc('font', family='Nimbus Sans', weight='bold')
 rc('axes',linewidth=1,edgecolor='k')
 
@@ -33,18 +33,19 @@ for filename in sorted(glob.glob("figure_3.csv", recursive=True)):
     impot = data_array[:,3]*27.211386245988
 
 
-fig, axs = plt.subplots(figsize=(1.625,0.875))
+fig, axs = plt.subplots(figsize=(0.95,1))
 
 popt2, pcov2 = curve_fit(func,z,MMA2) 
-axs.plot(x_dat,func(x_dat,*popt2),color="green",marker='none',linewidth=3.5,linestyle='-',label=r"$\mathrm{Model}$")
+axs.plot(x_dat,func(x_dat,*popt2),color="green",marker='none',linewidth=3.5,linestyle='-',label=r"$\mathrm{}$")
 
 rc('font', weight='bold')
-axs.plot(x_dat,-27.211386245988/(4*x_dat),color="black",linestyle=':',marker="none",linewidth=1.5,label=r"$\mathrm{Image \ Pot.}$")
+axs.plot(x_dat,-27.211386245988/(4*x_dat),color="black",linestyle=':',marker="none",linewidth=1.5,label=r"$\mathrm{}$")
 
 axs.set_xticks([])
 axs.set_yticks([])
 axs.grid(False)
-axs.legend(loc="best", frameon=False, handlelength=1, fontsize=6)
-axs.set_ylabel(r"$\mathit{E}_{\mathrm{Pol}}$")
+axs.legend(loc=2, frameon=False, handlelength=1, fontsize=6, bbox_to_anchor=(0.15, 0.35))
+#axs.set_ylabel(r"$\mathit{E}_{\mathrm{Pol}}$")
 
+fig.set_tight_layout(True)
 plt.savefig("figure_3.png", dpi=300)

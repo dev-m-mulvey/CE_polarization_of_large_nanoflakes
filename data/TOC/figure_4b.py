@@ -9,7 +9,7 @@ from collections import Counter
 
 params = {'mathtext.default': 'bf'}
 plt.rcParams.update(params)
-plt.rcParams.update({'font.size': 8})
+plt.rcParams.update({'font.size': 6})
 rc('font', family='Nimbus Sans', weight='bold')
 rc('axes',linewidth=1,edgecolor='k')
 
@@ -39,7 +39,7 @@ def open_mom_files(file):
 
 upperdirs = natsort.natsorted(glob.glob("*/", recursive=True),reverse=True)
 
-fig, axs = plt.subplots(figsize=(1.625,0.875))
+fig, axs = plt.subplots(figsize=(0.95,1))
 
 colors=['orange','g']
 sty=['o','^']
@@ -69,18 +69,20 @@ for idx,direct in enumerate(upperdirs):
              unique_avg_q.append(sum_at_radius)
         ##Bring together r and charges.
         plot_data = np.vstack((unique_r, unique_avg_q)).T
-        axs.plot(plot_data[:,0],plot_data[:,1],color=colors[idx],linewidth=3.5,label=r"$\mathrm{Model}$")
+        axs.plot(plot_data[:,0],plot_data[:,1],color=colors[idx],linewidth=3.5,label=r"$\mathrm{}$")
 y_classical = []
 for i in plot_data[:,0]:
     y_exp = 1-(10/((i**2+100)**float(1/2)))
     y_classical.append(y_exp)
 classical_data = np.vstack((unique_r, y_classical)).T
-axs.plot(classical_data[:,0],classical_data[:,1],c='k',linestyle=':',linewidth=1.5,label=r"$\mathrm{Image \ Pot.}$")
-axs.set_xlim([-5,476])
+axs.plot(classical_data[:,0],classical_data[:,1],c='k',linestyle=':',linewidth=1.5,label=r"$\mathrm{}$")
+axs.set_xlim([-6,477])
 axs.set_ylim([-0.05,1.05])
 axs.grid(False)
 axs.set_xticks([])
 axs.set_yticks([])
-axs.legend(loc=8, frameon=False, handlelength=1)
-axs.set_ylabel(r"$\mathit{q}_{\mathrm{Cumulative}}$")
+axs.legend(loc=2, frameon=False, handlelength=1, bbox_to_anchor=(0.01, 0.35))
+#axs.set_ylabel(r"$\mathit{q}_{\mathrm{Cumulative}}$")
+
+fig.set_tight_layout(True)
 plt.savefig("figure_4_b.png",dpi=300)
