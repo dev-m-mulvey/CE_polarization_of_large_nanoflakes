@@ -15,7 +15,10 @@ plt.rcParams.update({'font.size': 10})
 rc('font', family='Nimbus Sans', weight='bold')
 rc('axes',linewidth=1,edgecolor='k')
 
+##Figure 2a
+
 pot = []
+#Open csv in current folder, convert to array, and convert data Hartree to eV
 for filename in sorted(glob.glob("figure_2_a.csv", recursive=True)):
     Source = os.path.splitext(filename)[0].split(".")[0]
     data = pd.read_csv(filename, sep=",", dtype=np.float64)
@@ -30,17 +33,23 @@ for filename in sorted(glob.glob("figure_2_a.csv", recursive=True)):
     impot = data_array[:,6]*27.211386245988
     pot.append([Source,z,c150,c600,c2400,c15000,c60000,impot])
 
-
+#Create figure 
 fig = plt.figure(figsize=(3.33,3.33))
 axs = fig.gca()
 i=pot[0]
+#Plot the model curves
 axs.plot(i[1],i[2],color="blue",markersize=7,linewidth=1.5,marker="o",label=r"$\mathrm{C_{150}}$")
 axs.plot(i[1],i[3],color="purple",markersize=7,linewidth=1.5,linestyle='-',marker=10,label=r"$\mathrm{C_{600}}$")
 axs.plot(i[1],i[4],color="orange",markersize=7,linewidth=1.5,linestyle='-',marker=11,label=r"$\mathrm{C_{2400}}$")
 axs.plot(i[1],i[5],color="red",markersize=7,linewidth=1.5,linestyle='-',marker="+",markeredgewidth=1.5,label=r"$\mathrm{C_{15000}}$")
 axs.plot(i[1],i[6],color="lime",markersize=7,linewidth=1.5,linestyle='-',marker="x",markeredgewidth=1.5,label=r"$\mathrm{C_{60000}}$")
+#Plot the reference image potential curve. 
 axs.plot(i[1],i[7],color="black",markersize=7,linewidth=1.5,linestyle='-',marker="s",markeredgecolor='k',fillstyle='none',markeredgewidth=1.5,label=r"$\mathrm{-6.8028/|}\mathit{z}|$")
+
+#Add identifying text
 axs.text(5.85,-0.15,r"$\mathrm{(a): Q_{mol}=0}$",horizontalalignment='center',verticalalignment='center')
+
+#Modify figure to look more like publication's style
 axs.set_xlabel(r"$\mathit{z} \ (a_0)$")  
 axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
 axs.set_xticks([5,6,7,8,9,10])
@@ -53,7 +62,10 @@ axs.legend(loc="lower right", frameon=False, fontsize=7)
 fig.set_tight_layout(True)
 plt.savefig("figure_2_a.png", dpi=300)
 
+##Figure 2b
+
 pot = []
+#Open csv in current folder, convert to array, and convert data Hartree to eV
 for filename in sorted(glob.glob("figure_2_b.csv", recursive=True)):
     Source = os.path.splitext(filename)[0].split(".")[0]
     data = pd.read_csv(filename, sep=",", dtype=np.float64)
@@ -72,13 +84,19 @@ for filename in sorted(glob.glob("figure_2_b.csv", recursive=True)):
 fig = plt.figure(figsize=(3.33,3.33))
 axs = fig.gca()
 i=pot[0]
+#Plot the model curves
 axs.plot(i[1],i[2],color="blue",markersize=7,linewidth=1.5,marker="o",label=r"$\mathrm{C_{150}}$")
 axs.plot(i[1],i[3],color="purple",markersize=7,linewidth=1.5,linestyle='-',marker=10,label=r"$\mathrm{C_{600}}$")
 axs.plot(i[1],i[4],color="orange",markersize=7,linewidth=1.5,linestyle='-',marker=11,label=r"$\mathrm{C_{2400}}$")
 axs.plot(i[1],i[5],color="red",markersize=7,linewidth=1.5,linestyle='-',marker="+",markeredgewidth=1.5,label=r"$\mathrm{C_{15000}}$")
 axs.plot(i[1],i[6],color="lime",markersize=7,linewidth=1.5,linestyle='-',marker="x",markeredgewidth=1.5,label=r"$\mathrm{C_{60000}}$")
+#Plot the reference image potential curve. 
 axs.plot(i[1],i[7],color="black",markersize=7,linewidth=1.5,linestyle='-',marker="s",markeredgecolor='k',fillstyle='none',markeredgewidth=1.5,label=r"$\mathrm{-6.8028/|}\mathit{z}|$")
+
+#Add identifying text
 axs.text(6.05,-0.54,r"$\mathrm{(b): Q_{mol}=+1}$",horizontalalignment='center',verticalalignment='center')
+
+#Modify figure to look more like publication's style
 axs.set_xlabel(r"$\mathit{z} \ (a_0)$")
 axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
 axs.set_xticks([5,6,7,8,9,10])
