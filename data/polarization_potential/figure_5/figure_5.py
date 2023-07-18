@@ -59,4 +59,4 @@ axs.legend(loc="best", frameon=False, fontsize=8, markerscale=600)
 axs.set_ylabel(r"$\mathit{E}_{int} \ \mathrm{\left( eV \right)}$")
 
 fig.set_tight_layout(True)
-plt.savefig("figure_5.png", dpi=300)
+plt.savefig("figure_5.eps", dpi=300)

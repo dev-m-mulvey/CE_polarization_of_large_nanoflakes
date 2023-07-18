@@ -48,4 +48,4 @@ axs.set_ylabel(r"$\mathrm{\alpha_{xx/yy}} \ \mathrm{\left( a.u.^{3} \right)}$")
 axs.set_xlabel(r"$\mathit{N_{C}}$")
 
 fig.set_tight_layout(True)
-plt.savefig("figure_1.png", dpi=300)
+plt.savefig("figure_1.eps", dpi=300)

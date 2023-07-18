@@ -67,4 +67,4 @@ axs.legend(loc="best", frameon=False, markerscale=600, fontsize=9)
 axs.set_ylabel(r"$\mathit{E}_{pol} \ \mathrm{\left( eV \right)}$")
 
 fig.set_tight_layout(True)
-plt.savefig("figure_2_c.png", dpi=300)
+plt.savefig("figure_2_c.eps", dpi=300)

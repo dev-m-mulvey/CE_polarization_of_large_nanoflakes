@@ -60,7 +60,7 @@ axs.grid(False)
 axs.legend(loc="lower right", frameon=False, fontsize=7)
 
 fig.set_tight_layout(True)
-plt.savefig("figure_2_a.png", dpi=300)
+plt.savefig("figure_2_a.eps", dpi=300)
 
 ##Figure 2b
 
@@ -107,4 +107,4 @@ axs.grid(False)
 axs.legend(loc="lower right", frameon=False, fontsize=9)
 
 fig.set_tight_layout(True)
-plt.savefig("figure_2_b.png", dpi=300)
+plt.savefig("figure_2_b.eps", dpi=300)
