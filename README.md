@@ -48,6 +48,6 @@ peau, D.; Burovski, E.; Peterson, P.; Weckesser, W.; Bright, J. et al. SciPy 1.0
 mental Algorithms for Scientific Computing in Python. Nat. Methods 2020, 17, 261–
 272, DOI: 10.1038/s41592-019-0686-2.
 
-* [Ovito](https://www.ovito.org/docs/current/)
+* [Ovito](https://www.ovito.org/docs/current/) - Used to generate structure in TOC image.
 
 Ref: Stukowski A., Visualization and analysis of atomistic simulation data with OVITO–the Open Visualization Tool. Modell. Simul. Mater. Sci. Eng. 2010, 18, 015012, DOI: 10.1088/0965-0393/18/1/015012
