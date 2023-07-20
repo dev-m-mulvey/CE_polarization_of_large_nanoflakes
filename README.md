@@ -1,5 +1,5 @@
 # CE_polarization_of_large_nanoflakes
-Repository containing SI for paper titled, "Application of a Charge Equilibration Model to Describe Polarization in Large Polyaromatic Hydrocarbons and Carbon Nanoflakes".
+Repository containing SI for paper titled, "Application of a Fluctuating Charge Polarization Model to Large Polyaromatic Hydrocarbons and Graphene Nanoflakes".
 
 **General note: All directories in the data/ folder will contain the images that appear in the manuscript (.png), the data used to plot them (.out or .csv) in atomic units, and the python scripts used to plot them (.py). The above files will be titled such that they correspond to the image used in the paper.**
 
