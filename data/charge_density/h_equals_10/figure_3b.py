@@ -108,7 +108,7 @@ axs.grid(False)
 axs.xaxis.set_tick_params(direction="in",length=3,width=1,pad=6.25)
 axs.yaxis.set_tick_params(direction="in",length=3,width=1,pad=6.25)
 axs.set_xticks([100,200,300,400])
-axs.legend(loc=8, frameon=False, markerscale=1.5, title=r"$\mathrm{(a): \ \mathit{z}=10 \ a_{0}}$")
+axs.legend(loc=8, frameon=False, markerscale=1.5, title=r"$\mathrm{(b): \ \mathit{z}=10 \ a_{0}}$")
 axs.set_xlabel(r"$\mathit{R} \ (a_{0})$")
 axs.set_ylabel(r"$\mathit{q}_{Cumulative} \ (e)$")
 
